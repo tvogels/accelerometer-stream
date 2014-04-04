@@ -1,4 +1,4 @@
-# Motion Tracker
+# Phone Motion Stream Server
 
 This is a simple node.js server that sets up a real-time stream between a mobile phone's accelerometer and gyroscope data to the server. The phone connects through its browser, after which the data is transfered over a websocket connection.
 
