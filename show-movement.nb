@@ -1,0 +1,240 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7163,        231]
+NotebookOptionsPosition[      6071,        186]
+NotebookOutlinePosition[      6430,        202]
+CellTagsIndexPosition[      6387,        199]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Real-Time Connection to the motion tracker\
+\>", "Title",
+ CellChangeTimes->{{3.60551739773552*^9, 3.6055174059863253`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Set up", "Section",
+ CellChangeTimes->{{3.6004398088990993`*^9, 3.600439809465228*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6055174120478373`*^9, 3.605517417720962*^9}}],
+
+Cell[BoxData["\<\"/Users/thijs/UCR/Courses/sci321 classical \
+mechanics/sci321-motion-tracker-bare\"\>"], "Output",
+ CellChangeTimes->{3.605517418196919*^9}]
+}, Open  ]],
+
+Cell["\<\
+The ID for the observation is \[OpenCurlyQuote]realtime\[CloseCurlyQuote].\
+\>", "Text",
+ CellChangeTimes->{{3.605518054648575*^9, 3.6055180672820883`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"id", "=", "\"\<realtime\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.6055180774477158`*^9, 3.605518079980782*^9}}],
+
+Cell["Define the right files", "Text",
+ CellChangeTimes->{{3.6055180829964237`*^9, 3.6055180849103537`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"orientation", ":=", 
+   RowBox[{"ReadList", "[", 
+    RowBox[{
+     RowBox[{
+     "\"\<data\>\"", "<>", "$PathnameSeparator", "<>", "id", "<>", 
+      "\"\<-orientation.txt\>\""}], ",", 
+     RowBox[{"{", 
+      RowBox[{"Number", ",", "Number", ",", "Number"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curOrientation", ":=", 
+   RowBox[{
+    RowBox[{"Last", "[", "orientation", "]"}], "*", "Degree"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"acceleration", ":=", 
+   RowBox[{"ReadList", "[", 
+    RowBox[{
+     RowBox[{
+     "\"\<data\>\"", "<>", "$PathnameSeparator", "<>", "id", "<>", 
+      "\"\<-motion.txt\>\""}], ",", 
+     RowBox[{"{", 
+      RowBox[{"Number", ",", "Number", ",", "Number"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"curAcceleration", ":=", 
+  RowBox[{"Last", "[", "acceleration", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.600433901175572*^9, 3.600433933402821*^9}, {
+   3.600442151980412*^9, 3.6004421750731773`*^9}, 3.600442235070418*^9, {
+   3.600442273469795*^9, 3.600442296891574*^9}, {3.600442353195503*^9, 
+   3.600442400666885*^9}, {3.600442522082822*^9, 3.6004425229073753`*^9}, 
+   3.6004426446378202`*^9, {3.6004430653557653`*^9, 3.600443068007324*^9}, {
+   3.6012742365288067`*^9, 3.601274242427121*^9}, {3.601274325088222*^9, 
+   3.601274328593444*^9}, {3.605334694008275*^9, 3.60533473042072*^9}, 
+   3.605517979153409*^9, {3.60551803416995*^9, 3.605518036787406*^9}, {
+   3.605518100243553*^9, 3.605518122723065*^9}, {3.605518163350389*^9, 
+   3.605518209056123*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Current values", "Section",
+ CellChangeTimes->{{3.6055183008684607`*^9, 3.6055183028414087`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "[", 
+  RowBox[{"curAcceleration", ",", 
+   RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.60551819268782*^9, 3.605518194933424*^9}, {
+  3.605518304610455*^9, 3.605518327304775*^9}, {3.6055183610706377`*^9, 
+  3.6055183611885567`*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`curAcceleration, StandardForm],
+  ImageSizeCache->{216., {2.375, 9.}},
+  UpdateInterval:>0.1]], "Output",
+ CellChangeTimes->{{3.605518195103746*^9, 3.605518211315839*^9}, 
+   3.6055182584177837`*^9, {3.605518293945788*^9, 3.605518327535215*^9}, 
+   3.60551837204432*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "[", 
+  RowBox[{"curOrientation", ",", 
+   RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.605518294672949*^9, {3.605518331134408*^9, 3.6055183636639442`*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`curOrientation, StandardForm],
+  ImageSizeCache->{217., {2.375, 9.}},
+  UpdateInterval:>0.1]], "Output",
+ CellChangeTimes->{{3.605518334905167*^9, 3.605518364031888*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Norm of the acceleration", "Subsection",
+ CellChangeTimes->{{3.605518417625551*^9, 3.605518420511585*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "[", 
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"PointSize", "[", "Large", "]"}], ",", "\[IndentingNewLine]", 
+       "Red", ",", "\[IndentingNewLine]", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Norm", "[", "curAcceleration", "]"}], ",", "0"}], "}"}], 
+        "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "20"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"UpdateInterval", "\[Rule]", ".01"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6055184253099623`*^9, 3.605518428296077*^9}, {
+  3.605518475524272*^9, 3.605518588645761*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   Graphics[{
+     PointSize[Large], Red, 
+     Point[{
+       Norm[$CellContext`curAcceleration], 0}]}, 
+    PlotRange -> {{0, 20}, {-1, 1}}, Axes -> True], StandardForm],
+  ImageSizeCache->{360., {20., 24.}},
+  UpdateInterval:>0.01]], "Output",
+ CellChangeTimes->{{3.605518521601836*^9, 3.605518589378664*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1127, 743},
+WindowMargins->{{Automatic, 111}, {-15, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 134, 3, 92, "Title"],
+Cell[CellGroupData[{
+Cell[738, 29, 93, 1, 80, "Section"],
+Cell[CellGroupData[{
+Cell[856, 34, 172, 3, 28, "Input"],
+Cell[1031, 39, 157, 2, 28, "Output"]
+}, Open  ]],
+Cell[1203, 44, 166, 3, 30, "Text"],
+Cell[1372, 49, 151, 3, 28, "Input"],
+Cell[1526, 54, 108, 1, 30, "Text"],
+Cell[1637, 57, 1613, 37, 80, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3287, 99, 103, 1, 80, "Section"],
+Cell[CellGroupData[{
+Cell[3415, 104, 308, 6, 28, "Input"],
+Cell[3726, 112, 317, 6, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4080, 123, 233, 5, 28, "Input"],
+Cell[4316, 130, 217, 4, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4570, 139, 112, 1, 44, "Subsection"],
+Cell[CellGroupData[{
+Cell[4707, 144, 962, 25, 97, "Input"],
+Cell[5672, 171, 347, 9, 93, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
