@@ -11,10 +11,20 @@ var http = require('http')
 
 // R E A D   S E R V E R   I P
 
-var ifaces = os.networkInterfaces();
-var ip = ifaces['en0'].filter(function(details){
-  return details.family=='IPv4';
-})[0].address;
+var ifaces=os.networkInterfaces();
+var ips = [];
+for (var dev in ifaces) {
+  var alias=0;
+  ifaces[dev].forEach(function(details){
+    if (details.family=='IPv4') {
+      ips.push(details.address);
+      ++alias;
+    }
+  });
+}
+var ip = ips.filter(function(d) {
+  return d != '127.0.0.1';
+})[0];
 
 
 //  S E T   U P   T H E   H T T P   S E R V E R
