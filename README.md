@@ -20,6 +20,7 @@ Make sure you have the following
 
 ### Set up the connection
 
+* Make sure your phone and computer are connected to the same network.
 * Grab your phone and navigate to the webpage indicated by the server when started.
 * Enter a unique ID for the measurement and start streaming!
 * The data collected will end up in data/[id]-(motion|orientation).txt
