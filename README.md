@@ -7,7 +7,7 @@ This is a simple node.js server that sets up a real-time stream between a mobile
 
 Make sure you have the following
 
-* [node.js](http://nodejs.org/) installed 
+* [node.js](http://nodejs.org/) installed. When using Windows, make sure to reboot your PC after installation.
 * This project in a folder on your PC or Mac. (Download using the [Download ZIP] button on the right of this page.)
 
 ## Usage
