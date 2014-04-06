@@ -15,7 +15,7 @@ Make sure you have the following
 ### Start the server
 
 * Open a console (Terminal in OS X, cmd in Windows)
-* Navigate to the server directory (using `cd`)
+* Navigate to the server directory (using `cd`). The server directory is the folder downloaded from here and includes the `server.js` file.
 * Start the server by typing `node server.js`.
 
 ### Set up the connection
